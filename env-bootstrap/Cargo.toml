@@ -16,6 +16,8 @@ libc = "0.2"
 log = "0.4"
 env_logger = "0.9"
 termwiz = { path = "../termwiz" }
+aws = { path = "../lua-api-crates/aws" }
+kubernetes = { path = "../lua-api-crates/kubernetes" }
 battery = { path = "../lua-api-crates/battery" }
 termwiz-funcs = { path = "../lua-api-crates/termwiz-funcs" }
 logging = { path = "../lua-api-crates/logging" }

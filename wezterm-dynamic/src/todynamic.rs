@@ -1,7 +1,7 @@
 use crate::object::Object;
 use crate::value::Value;
 use ordered_float::OrderedFloat;
-use std::collections::{BTreeMap, HashMap};
+use std::{collections::{BTreeMap, HashMap}, borrow::Cow};
 
 /// The ToDynamic trait allows a type to emit a representation of itself
 /// as the Value type.
@@ -57,6 +57,12 @@ impl<T: ToDynamic> ToDynamic for std::sync::Arc<T> {
 }
 
 impl<T: ToDynamic> ToDynamic for Box<T> {
+    fn to_dynamic(&self) -> Value {
+        self.as_ref().to_dynamic()
+    }
+}
+
+impl<T: ToDynamic + ToOwned> ToDynamic for Cow<'_, T> {
     fn to_dynamic(&self) -> Value {
         self.as_ref().to_dynamic()
     }

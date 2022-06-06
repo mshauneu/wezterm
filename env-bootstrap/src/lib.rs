@@ -160,6 +160,8 @@ fn register_panic_hook() {
 
 fn register_lua_modules() {
     for func in [
+        aws::register,
+        kubernetes::register,
         battery::register,
         termwiz_funcs::register,
         logging::register,
